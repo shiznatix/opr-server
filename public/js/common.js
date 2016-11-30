@@ -5,6 +5,12 @@ const ALERTS = {
 	'ERROR': 4,
 };
 
+$(document).ready(function() {
+	$.get('/nav.html', function(data) {
+		$('body').prepend(data);
+	});
+});
+
 function guidGenerator() {
 	const S4 = function() {
 		return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);

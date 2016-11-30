@@ -41,4 +41,7 @@ const COMMANDS = {
 	'browse': {
 		'url': 'browse',
 	},
+	'showCategories': {
+		'url': 'show-categories',
+	},
 };
