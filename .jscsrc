@@ -1,0 +1,65 @@
+{
+	"excludeFiles": ["node_modules/**", "coverage/**", ".sonar/**"],
+	"fileExtensions": [".js", ".jsx"],
+	"disallowKeywords": ["with"],
+	"disallowKeywordsOnNewLine": ["else"],
+	"disallowMixedSpacesAndTabs": "smart",
+	"disallowMultipleLineBreaks": true,
+	"disallowNewlineBeforeBlockStatements": true,
+	"disallowSpacesInCallExpression": true,
+	"disallowTrailingWhitespace": true,
+	"disallowQuotedKeysInObjects": false,
+	"requireDotNotation": true,
+	"requireBlocksOnNewline": true,
+	"requireCurlyBraces": [
+		"else",
+		"for",
+		"while",
+		"do",
+		"try",
+		"catch"
+	],
+	"requireMultipleVarDecl": true,
+	"requireSpaceBeforeObjectValues": true,
+	"requireSpaceBetweenArguments": true,
+	"requireSpaceBeforeBlockStatements": true,
+	"requireSpaceBeforeBinaryOperators": true,
+	"requireSpaceAfterBinaryOperators": true,
+	"requireSpaceBeforeKeywords": [
+		"else",
+		"while",
+		"catch"
+	],
+	"requireSpaceAfterKeywords": [
+		"do",
+		"for",
+		"if",
+		"else",
+		"switch",
+		"case",
+		"try",
+		"catch",
+		"void",
+		"while",
+		"with",
+		"return",
+		"typeof"
+	],
+	"requireSpaceAfterLineComment": true,
+	"requireSpacesInAnonymousFunctionExpression": {
+		"beforeOpeningCurlyBrace": true
+	},
+	"requireSpacesInFunctionDeclaration": {
+		"beforeOpeningCurlyBrace": true
+	},
+	"requireSpacesInFunction": {
+		"beforeOpeningCurlyBrace": true
+	},
+	"requireCamelCaseOrUpperCaseIdentifiers": "ignoreProperties",
+	"requireCapitalizedConstructors": true,
+	"safeContextKeyword": ["self"],
+	"validateIndentation": "\t",
+	"validateLineBreaks": "LF",
+	"validateParameterSeparator": ", ",
+	"validateQuoteMarks": "'"
+}

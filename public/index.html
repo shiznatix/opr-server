@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Omxplayer Remote</title>
+
+		<link href="/css/bootstrap.min.css" rel="stylesheet">
+		<link href="/css/bootstrap-theme.min.css" rel="stylesheet">
+		<link href="/css/styles.css" rel="stylesheet">
+		<script src="/js/jquery-3.1.1.min.js"></script>
+		<script src="/js/bootstrap.min.js"></script>
+		<script src="/js/common.js"></script>
+		<script src="/js/commands.js"></script>
+	</head>
+	<body>
+		<!-- Navbar -->
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#">OmxPR - Remote</a>
+				</div>
+				<div id="navbar" class="navbar-collapse collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="#" class="command" data-cmd="heartbeat">Heartbeat</a></li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">...</a>
+							<ul class="dropdown-menu">
+								<li><a href="/random-settings.html">Random settings</a></li>
+								<li><a href="#" class="command" data-cmd="restoreLastPlaylist">Restore last paylist</a></li>
+								<li><a href="#" class="command" data-cmd="currentPlaylist">Current playlist</a></li>
+								<li><a href="#" class="command" data-cmd="closePlayer">Close player</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+		<div class="container-fluid theme-showcase" role="main">
+			<div class="jumbotron text-center">
+				<h1 id="domain"></h1>
+
+				<div id="toast-container"></div>
+
+				<div class="container-fluid remote-row">
+					<div class="row">
+						<div class="col-md-6">
+							<button type="button" class="btn btn-lg btn-success control-third pull-left command" data-cmd="previous">&lt;&lt; Previous</button>
+						</div>
+					    <div class="col-md-6">
+					    	<button type="button" class="btn btn-lg btn-success control-third pull-right command" data-cmd="next">Next &gt;&gt;</button>
+					    </div>
+					</div>
+				</div>
+
+				<div class="container-fluid remote-row">
+					<div class="row">
+						<div class="col-md-6">
+							<button type="button" class="btn btn-lg btn-success control-half pull-left command" data-cmd="playPause">Play / Pause</button>
+						</div>
+					    <div class="col-md-6">
+					    	<button type="button" class="btn btn-lg btn-success control-half pull-right" id="play-file">Play file</button>
+					    </div>
+					</div>
+				</div>
+
+				<div class="container-fluid remote-row">
+					<div class="row">
+						<div class="col-md-6">
+							<button type="button" class="btn btn-lg btn-success control-third pull-left command" data-cmd="back">&lt;&lt; Back</button>
+						</div>
+					    <div class="col-md-6">
+					    	<button type="button" class="btn btn-lg btn-success control-third pull-right command" data-cmd="forward">Fwd &gt;&gt;</button>
+					    </div>
+					</div>
+				</div>
+
+				<div class="container-fluid remote-row">
+					<button type="button" class="btn btn-lg btn-success control-full" data-toggle="modal" data-target="#modal-random">Random</button>
+				</div>
+
+				<div class="container-fluid remote-row">
+					<div class="row">
+						<div class="col-md-6">
+							<button type="button" class="btn btn-lg btn-success control-half pull-left command" data-cmd="volumeDown">Vol Down</button>
+						</div>
+					    <div class="col-md-6">
+					    	<button type="button" class="btn btn-lg btn-success control-half pull-right command"  data-cmd="volumeUp">Vol Up</button>
+					    </div>
+					</div>
+				</div>
+
+				<div class="container-fluid remote-row">
+					<button type="button" class="btn btn-lg btn-success control-full command" data-cmd="browse">Browse</button>
+				</div>
+			</div>
+		</div>
+
+		<!-- modals -->
+		<div class="modal fade" id="modal-random" role="dialog">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="exampleModalLabel">Random</h4>
+					</div>
+
+					<div class="modal-body">
+						<form id="random-form">
+							<div class="radio">
+								<label><input type="radio" name="playlistSize" value="1">1</label>
+							</div>
+							<div class="radio">
+								<label><input type="radio" name="playlistSize" value="2">2</label>
+							</div>
+							<div class="radio">
+								<label><input type="radio" name="playlistSize" value="3">3</label>
+							</div>
+							<div class="radio">
+								<label><input type="radio" name="playlistSize" value="5">5</label>
+							</div>
+							<div class="radio">
+								<label><input type="radio" name="playlistSize" value="10">10</label>
+							</div>
+						</form>
+					</div>
+
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-primary command-random" data-type="enqueue">Enqueue</button>
+						<button type="button" class="btn btn-primary command-random" data-type="play">Play</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal fade" id="modal-play-file" role="dialog">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="exampleModalLabel">Play file</h4>
+					</div>
+
+					<div class="modal-body">
+						<form id="play-file-form">
+						</form>
+					</div>
+
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-primary">Play</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- modals /> -->
+
+		<script src="/js/remote.js"></script>
+	</body>
+</html>

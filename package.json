@@ -1,0 +1,20 @@
+{
+  "name": "omxplayer-remote",
+  "private": false,
+  "version": "1.0.0",
+  "description": "Omxplayer Remote",
+  "main": "index.js",
+  "dependencies": {
+    "bluebird": "^3.4.6",
+    "body-parser": "https://registry.npmjs.org/body-parser/-/body-parser-1.15.2.tgz",
+    "express": "^4.14.0",
+    "knex": "^0.12.6",
+    "lodash": "https://registry.npmjs.org/lodash/-/lodash-4.17.1.tgz"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  },
+  "scripts": {
+    "start": "nodemon index.js"
+  }
+}

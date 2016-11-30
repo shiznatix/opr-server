@@ -1,0 +1,20 @@
+body {
+	padding-top: 65px;
+}
+
+.remote-row {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.control-third {
+	width: 200px;
+}
+
+.control-half {
+	width: 400px;
+}
+
+.control-full {
+	width: 800px;
+}
