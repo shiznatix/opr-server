@@ -1,8 +1,8 @@
 {
-  "name": "omxplayer-remote",
+  "name": "omxplayer-remote-server",
   "private": false,
   "version": "1.0.0",
-  "description": "Omxplayer Remote",
+  "description": "Omxplayer remote server",
   "main": "index.js",
   "dependencies": {
     "bluebird": "^3.4.6",
