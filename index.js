@@ -1,7 +1,9 @@
 const currentDir = __dirname,
-	config = require(currentDir + '/config/config.json'),
-	logger = require(currentDir + '/lib/logger.js'),
-	shows = require(currentDir + '/lib/shows.js'),
+	config = require(`${currentDir}/config/config.json`),
+	logger = require(`${currentDir}/lib/logger.js`),
+	Shows = require(`${currentDir}/lib/shows.js`),
+	Browse = require(`${currentDir}/lib/browse.js`),
+	db = require(`${currentDir}/lib/db.js`),
 	express = require('express'),
 	bodyParser = require('body-parser'),
 	_ = require('lodash'),
@@ -28,13 +30,7 @@ app.use(bodyParser.urlencoded({
 
 // API routes
 app.post('/random', function(request, response) {
-	const params = {
-		'shows': request.body.shows,
-		'playlistSize': request.body.playlistSize,
-		'enqueue': !!request.body.enqueue,
-	};
-
-	playlist.random(params)
+	shows.random(request.body.showNames, request.body.amount)
 		.then(function(data) {
 			jsonResponse(response, data);
 		})
@@ -43,6 +39,8 @@ app.post('/random', function(request, response) {
 		});
 });
 app.post('/browse', function(request, response) {
+	const browse = new Browse;
+
 	browse.getFiles(request.body.path)
 		.then(function(data) {
 			jsonResponse(response, data);
@@ -67,7 +65,15 @@ app.get('*', function(request, response) {
 	});
 });
 
-// Start web server
-app.listen(config.port, function() {
-	logger.info('Started server (plain text) on port ' + config.port);
+// make sure our DB exists before we start up
+db.initDb().then(() => {
+	// Start web server
+	app.listen(config.port, function() {
+		logger.info('Started server (plain text) on port ' + config.port);
+	});
+
+	// Start scanning directories
+	const shows = new Shows;
+	shows.startScan();
+	shows.getByCategories();
 });

@@ -8,8 +8,9 @@
     "bluebird": "^3.4.6",
     "body-parser": "https://registry.npmjs.org/body-parser/-/body-parser-1.15.2.tgz",
     "express": "^4.14.0",
-    "knex": "^0.12.6",
-    "lodash": "https://registry.npmjs.org/lodash/-/lodash-4.17.1.tgz"
+    "knex": "https://registry.npmjs.org/knex/-/knex-0.12.6.tgz",
+    "lodash": "https://registry.npmjs.org/lodash/-/lodash-4.17.1.tgz",
+    "sqlite3": "^3.1.8"
   },
   "devDependencies": {
     "nodemon": "^1.11.0"
