@@ -5,8 +5,20 @@
   	"/Users/andrew/tmp/tmp-media/Shows2"
   ],
   "showCategories": {
-  	"Cartoons": [],
-  	"Drama": [],
-  	"Other": []
-  }
+  	"Cartoons": [
+      "Ee The Go",
+      "Fun One",
+      "Not here"
+    ],
+  	"Drama": [
+      "Booob"
+    ]
+  },
+  "otherCategoryName": "Other",
+  "playableExtensions": [
+    "mkv",
+    "mpg",
+    "mpeg",
+    "avi"
+  ]
 }
