@@ -2,7 +2,6 @@ const currentDir = __dirname,
 	config = require(`${currentDir}/config/config.json`),
 	logger = require(`${currentDir}/lib/logger.js`),
 	shows = require(`${currentDir}/lib/shows.js`),
-	Browse = require(`${currentDir}/lib/browse.js`),
 	db = require(`${currentDir}/lib/db.js`),
 	validator = require(`${currentDir}/lib/validator.js`),
 	express = require('express'),
@@ -34,16 +33,6 @@ app.post('/random', (request, response) => {
 	validator.random(request.body).then((params) => {
 		return shows.random(params.showNames, params.amount);
 	}).then((data) => {
-		successResponse(response, data);
-	}).catch((error) => {
-		logger.error(error);
-		errorResponse(response, error);
-	});
-});
-app.post('/browse', (request, response) => {
-	const browse = new Browse;
-
-	browse.getFiles(request.body.path).then((data) => {
 		successResponse(response, data);
 	}).catch((error) => {
 		logger.error(error);
