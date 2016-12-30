@@ -5,11 +5,11 @@
   	"/Users/username/media/Shows2"
   ],
   "showCategories": {
-  	"Cartoons": [
+    "Cartoons": [
       "The Simpsons",
       "Family Guy"
     ],
-  	"Drama": [
+    "Drama": [
       "The Wire"
     ]
   },
