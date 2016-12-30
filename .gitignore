@@ -38,3 +38,5 @@ jspm_packages
 
 # Sqlite database
 opr.sqlite
+
+config.json

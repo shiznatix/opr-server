@@ -1,17 +1,16 @@
 {
   "port": 9090,
   "dirs": [
-  	"/Users/andrew/tmp/tmp-media/Shows1",
-  	"/Users/andrew/tmp/tmp-media/Shows2"
+  	"/Users/username/media/Shows1",
+  	"/Users/username/media/Shows2"
   ],
   "showCategories": {
   	"Cartoons": [
-      "Ee The Go",
-      "Fun One",
-      "Not here"
+      "The Simpsons",
+      "Family Guy"
     ],
   	"Drama": [
-      "Booob"
+      "The Wire"
     ]
   },
   "otherCategoryName": "Other"
