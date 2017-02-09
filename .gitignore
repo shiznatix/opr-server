@@ -40,3 +40,4 @@ jspm_packages
 opr.sqlite
 
 config.json
+._*
