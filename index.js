@@ -8,6 +8,30 @@ const currentDir = __dirname,
 	bodyParser = require('body-parser'),
 	_ = require('lodash'),
 	app = express();
+let appServer = null;
+
+process.on('uncaughtException', function (error) {
+	logger.error('Uncaught exception!');
+	logger.error(error);
+});
+
+process.on('SIGTERM', () => {
+	logger.info('SIGTERM received');
+
+	// if we haven't exited within 2 seconds, just die
+	let killTimeout = setTimeout(() => {
+		logger.info('SIGTERM - app server not cleanly closed, exiting');
+
+		process.exit(1);
+	}, 2000);
+
+	appServer.close(() => {
+		clearTimeout(killTimeout);
+		logger.info('SIGTERM - app server closed, exiting');
+
+		process.exit(0);
+	});
+});
 
 function errorResponse(response, error, data = null) {
 	response.status(400).json({
@@ -57,7 +81,7 @@ app.get('*', (request, response) => {
 // make sure our DB exists before we start up
 db.initDb().then(() => {
 	// Start web server
-	app.listen(config.port, () => {
+	appServer = app.listen(config.port, () => {
 		logger.info('Started server (plain text) on port ' + config.port);
 	});
 
