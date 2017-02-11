@@ -63,6 +63,16 @@ app.post('/random', (request, response) => {
 		errorResponse(response, error);
 	});
 });
+app.put('/set-last-played-time', (request, response) => {
+	validator.setLastPlayedTime(request.body).then((params) => {
+		return db.setLastPlayedTime(params.filePaths);
+	}).then(() => {
+		successResponse(response);
+	}).catch((error) => {
+		logger.error(error);
+		errorResponse(response, error);
+	});
+});
 app.get('/shows', (request, response) => {
 	shows.getByCategories().then((data) => {
 		successResponse(response, data);
