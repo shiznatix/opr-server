@@ -2,6 +2,7 @@ const currentDir = __dirname,
 	config = require(`${currentDir}/config/config.json`),
 	logger = require(`${currentDir}/lib/logger.js`),
 	shows = require(`${currentDir}/lib/shows.js`),
+	showConverter = require(`${currentDir}/lib/show-converter.js`),
 	db = require(`${currentDir}/lib/db.js`),
 	validator = require(`${currentDir}/lib/validator.js`),
 	express = require('express'),
@@ -73,6 +74,16 @@ app.put('/set-last-played-time', (request, response) => {
 		errorResponse(response, error);
 	});
 });
+app.put('/set-file-not-playable', (request, response) => {
+	validator.setFileNotPlayable(request.body).then((params) => {
+		return db.setFileNotPlayable(params.filePath);
+	}).then(() => {
+		successResponse(response);
+	}).catch((error) => {
+		logger.error(error);
+		errorResponse(response, error);
+	});
+});
 app.get('/shows', (request, response) => {
 	shows.getByCategories().then((data) => {
 		successResponse(response, data);
@@ -97,4 +108,5 @@ db.initDb().then(() => {
 
 	// Start scanning directories
 	shows.startScan();
+	showConverter.run();
 });
