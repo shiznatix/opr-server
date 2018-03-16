@@ -5,11 +5,9 @@
   "description": "Omxplayer remote server",
   "main": "index.js",
   "dependencies": {
-    "bluebird": "^3.4.6",
     "body-parser": "https://registry.npmjs.org/body-parser/-/body-parser-1.15.2.tgz",
     "express": "^4.14.0",
     "knex": "https://registry.npmjs.org/knex/-/knex-0.12.6.tgz",
-    "lodash": "https://registry.npmjs.org/lodash/-/lodash-4.17.1.tgz",
     "shuffle-array": "^1.0.1",
     "sqlite3": "^3.1.8"
   },

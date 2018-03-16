@@ -1,14 +1,14 @@
-const currentDir = __dirname,
-	config = require(`${currentDir}/config/config.json`),
-	logger = require(`${currentDir}/lib/logger.js`),
-	shows = require(`${currentDir}/lib/shows.js`),
-	showConverter = require(`${currentDir}/lib/show-converter.js`),
-	db = require(`${currentDir}/lib/db.js`),
-	validator = require(`${currentDir}/lib/validator.js`),
-	express = require('express'),
-	bodyParser = require('body-parser'),
-	_ = require('lodash'),
-	app = express();
+const currentDir = __dirname;
+const config = require(`${__dirname}/config/config.json`);
+const logger = require(`${__dirname}/lib/logger.js`);
+const shows = require(`${__dirname}/lib/shows.js`);
+const showConverter = require(`${__dirname}/lib/show-converter.js`);
+const db = require(`${__dirname}/lib/db.js`);
+const validator = require(`${__dirname}/lib/validator.js`);
+const express = require('express');
+const bodyParser = require('body-parser');
+const app = express();
+
 let appServer = null;
 
 process.on('uncaughtException', function (error) {
@@ -20,7 +20,7 @@ process.on('SIGTERM', () => {
 	logger.info('SIGTERM received');
 
 	// if we haven't exited within 2 seconds, just die
-	let killTimeout = setTimeout(() => {
+	const killTimeout = setTimeout(() => {
 		logger.info('SIGTERM - app server not cleanly closed, exiting');
 
 		process.exit(1);
