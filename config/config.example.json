@@ -1,17 +1,6 @@
 {
   "port": 9090,
-  "dirs": [
-  	"/Users/username/media/Shows1",
-  	"/Users/username/media/Shows2"
-  ],
-  "showCategories": {
-    "Cartoons": [
-      "The Simpsons",
-      "Family Guy"
-    ],
-    "Drama": [
-      "The Wire"
-    ]
-  },
+  "dirs": [],
+  "showCategories": {},
   "otherCategoryName": "Other"
 }
