@@ -1,4 +1,3 @@
-const currentDir = __dirname;
 const config = require(`${__dirname}/config/config.json`);
 const logger = require(`${__dirname}/lib/logger.js`);
 const shows = require(`${__dirname}/lib/shows.js`);
